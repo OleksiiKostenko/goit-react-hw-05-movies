@@ -18,10 +18,15 @@ function SearchMovies() {
         ? setData(data)
         : alert(`We don't have any movie with this name`)
     );
-  });
+  }, [setData]);
 
   const handleSubmit = evt => {
     evt.preventDefault();
+
+    if (searchRequest === null) {
+      alert('Input movie name');
+      return;
+    }
 
     fetchMoviesForRequest(searchRequest).then(data =>
       data.length > 0
