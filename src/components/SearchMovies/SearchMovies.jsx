@@ -18,7 +18,7 @@ function SearchMovies() {
         ? setData(data)
         : alert(`We don't have any movie with this name`)
     );
-  }, [setData]);
+  });
 
   const handleSubmit = evt => {
     evt.preventDefault();

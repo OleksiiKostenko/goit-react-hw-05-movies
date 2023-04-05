@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 function MoveisList({ data }) {
@@ -17,3 +18,5 @@ function MoveisList({ data }) {
   );
 }
 export default MoveisList;
+
+MoveisList.propTypes = { data: PropTypes.array.isRequired };
