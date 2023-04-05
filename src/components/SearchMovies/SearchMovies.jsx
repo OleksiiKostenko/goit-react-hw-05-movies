@@ -18,7 +18,8 @@ function SearchMovies() {
         ? setData(data)
         : alert(`We don't have any movie with this name`)
     );
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setData]);
 
   const handleSubmit = evt => {
     evt.preventDefault();
