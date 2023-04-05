@@ -1,27 +1,33 @@
 import MoveisList from 'components/MoveisList/MoveisList';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesForRequest } from 'service/getRequest';
 
 function SearchMovies() {
-  const [query, setQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useSearchParams();
   const [data, setData] = useState([]);
 
-  const handleInputChange = evt => {
-    const { value } = evt.target;
-    setQuery(value);
-  };
+  const searchRequest = searchQuery.get('query');
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    fetchMoviesForRequest(query).then(data =>
+  useEffect(() => {
+    if (searchRequest === null) {
+      return;
+    }
+    fetchMoviesForRequest(searchRequest).then(data =>
       data.length > 0
         ? setData(data)
         : alert(`We don't have any movie with this name`)
     );
-    reset();
-  };
-  const reset = () => {
-    setQuery('');
+  });
+
+  const handleSubmit = evt => {
+    evt.preventDefault();
+
+    fetchMoviesForRequest(searchRequest).then(data =>
+      data.length > 0
+        ? setData(data)
+        : alert(`We don't have any movie with this name`)
+    );
   };
 
   return (
@@ -32,8 +38,7 @@ function SearchMovies() {
         </button>
 
         <input
-          onChange={handleInputChange}
-          value={query}
+          onChange={evt => setSearchQuery({ query: evt.target.value })}
           name="query"
           className="{css.SearchForm_input}"
           type="text"

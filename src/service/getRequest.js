@@ -8,7 +8,6 @@ export async function fetchTrending() {
     const response = await axios.get(
       `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`
     );
-    console.log(response);
     return response.data.results;
   } catch (error) {
     console.error(error);

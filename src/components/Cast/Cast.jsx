@@ -13,20 +13,24 @@ function Cast() {
 
   return (
     <div>
-      <ul>
-        {data.map(({ name, character, profile_path, id }) => (
-          <li key={id}>
-            {profile_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w185/${profile_path}`}
-                alt={name}
-              />
-            )}
-            <p>{name}</p>
-            <p>{character}</p>
-          </li>
-        ))}
-      </ul>
+      {data.length === 0 ? (
+        <p>We don't have any cast for this movie</p>
+      ) : (
+        <ul>
+          {data.map(({ name, character, profile_path, id }) => (
+            <li key={id}>
+              {profile_path && (
+                <img
+                  src={`https://image.tmdb.org/t/p/w185/${profile_path}`}
+                  alt={name}
+                />
+              )}
+              <p>{name}</p>
+              <p>{character}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
