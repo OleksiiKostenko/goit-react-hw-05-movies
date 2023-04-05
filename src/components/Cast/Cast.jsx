@@ -4,7 +4,7 @@ import { fetchMovieForIdAndParams } from 'service/getRequest';
 
 function Cast() {
   const { movieId } = useParams();
-  const [params, setParams] = useState('credits');
+  const params = 'credits';
   const [data, setData] = useState([]);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { fetchMovieForIdAndParams } from 'service/getRequest';
 
 function Reviews() {
   const { movieId } = useParams();
-  const [params, setParams] = useState('reviews');
+  const params = 'reviews';
   const [data, setData] = useState([]);
 
   useEffect(() => {
