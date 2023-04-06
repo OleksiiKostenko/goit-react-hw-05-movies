@@ -1,0 +1,41 @@
+.cast_wrapp{
+display: flex;
+}
+.cast_list{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.cast_item {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    width: 185px;
+}
+.cast_img{
+    border-radius: 10px;
+}
+.img_block{
+width: 185px;
+height: 278px;
+}
+.img{
+    width: 185px;
+    border-radius: 10px;
+}
+.text_not__found{
+    margin-left: 50px;
+    font-size: large;
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text{
+text-align: center;
+}
+.title{
+text-align: center;
+}

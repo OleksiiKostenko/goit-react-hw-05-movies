@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieForIdAndParams } from 'service/getRequest';
+import css from './Cast.module.css';
+import img from 'no_photo.jpg';
 
 function Cast() {
   const { movieId } = useParams();
@@ -10,23 +12,30 @@ function Cast() {
   useEffect(() => {
     fetchMovieForIdAndParams(movieId, params).then(data => setData(data.cast));
   }, [movieId, params]);
-
+  console.log('object :>> ', data);
   return (
-    <div>
+    <div className={css.cast_wrapp}>
       {data.length === 0 ? (
-        <p>We don't have any cast for this movie</p>
+        <p className={css.text_not__found}>
+          We don't have any cast for this movie
+        </p>
       ) : (
-        <ul>
+        <ul className={css.cast_list}>
           {data.map(({ name, character, profile_path, id }) => (
-            <li key={id}>
-              {profile_path && (
+            <li className={css.cast_item} key={id}>
+              {profile_path === null ? (
+                <div className={css.img_block}>
+                  <img className={css.img} src={img} alt="" />
+                </div>
+              ) : (
                 <img
+                  className={css.cast_img}
                   src={`https://image.tmdb.org/t/p/w185/${profile_path}`}
                   alt={name}
                 />
               )}
-              <p>{name}</p>
-              <p>{character}</p>
+              <h3 className={css.title}>{name}</h3>
+              <p className={css.text}>{character}</p>
             </li>
           ))}
         </ul>

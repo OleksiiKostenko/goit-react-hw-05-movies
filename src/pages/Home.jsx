@@ -1,6 +1,7 @@
 import MoveisList from 'components/MoveisList/MoveisList';
 import React, { useEffect, useState } from 'react';
 import { fetchTrending } from 'service/getRequest';
+import css from './Page.module.css';
 
 function Home() {
   const [data, setData] = useState([]);
@@ -10,8 +11,12 @@ function Home() {
 
   return (
     <>
-      <h1>Trending today</h1>
-      <MoveisList data={data} />
+      <div className={css.title_wrapp}>
+        <h1 className={css.title}>Trending today</h1>
+      </div>
+      <div className={css.list_wrapp}>
+        <MoveisList data={data} />
+      </div>
     </>
   );
 }

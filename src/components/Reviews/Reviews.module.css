@@ -1,0 +1,13 @@
+.reviews_wrapp{
+color: #fff;
+font-size: large;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.list{
+    list-style:circle;
+
+}
+.text_not__found {
+    margin-left: 50px;
+}

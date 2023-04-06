@@ -2,6 +2,7 @@ import MoveisList from 'components/MoveisList/MoveisList';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesForRequest } from 'service/getRequest';
+import css from './SearchMovies.module.css';
 
 function SearchMovies() {
   const [searchQuery, setSearchQuery] = useSearchParams();
@@ -37,24 +38,32 @@ function SearchMovies() {
   };
 
   return (
-    <section>
-      <form className="{css.SearchForm}" onSubmit={handleSubmit}>
-        <button type="submit" className="{css.SearchForm_button}">
-          <span className="{css.SearchForm_button__label}">Search</span>
-        </button>
+    <>
+      <div className={css.form_wrapp}>
+        <form className={css.search_form} onSubmit={handleSubmit}>
+          <button type="submit" className={css.search_form__btn}>
+            Search
+          </button>
 
-        <input
-          onChange={evt => setSearchQuery({ query: evt.target.value })}
-          name="query"
-          className="{css.SearchForm_input}"
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
-      </form>
-      {data && <MoveisList data={data} />}
-    </section>
+          <input
+            onChange={evt => setSearchQuery({ query: evt.target.value })}
+            name="query"
+            className={css.form_input}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search movies"
+          />
+        </form>
+      </div>
+      {data.length === 0 ? (
+        <></>
+      ) : (
+        <div className={css.list_wrapp}>
+          <MoveisList data={data} />
+        </div>
+      )}
+    </>
   );
 }
 

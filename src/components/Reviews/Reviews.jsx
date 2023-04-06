@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieForIdAndParams } from 'service/getRequest';
+import css from './Reviews.module.css';
 
 function Reviews() {
   const { movieId } = useParams();
@@ -14,14 +15,16 @@ function Reviews() {
   }, [movieId, params]);
 
   return (
-    <div>
+    <div className={css.reviews_wrapp}>
       {data.length === 0 ? (
-        <p>We don't have any reviews for this movie</p>
+        <p className={css.text_not__found}>
+          We don't have any reviews for this movie
+        </p>
       ) : (
-        <ul>
+        <ul className={css.list}>
           {data.map(({ author, content, id }) => (
             <li key={id}>
-              <h4>Author:{author}</h4>
+              <h4>Author: {author}</h4>
               <p>{content}</p>
             </li>
           ))}
